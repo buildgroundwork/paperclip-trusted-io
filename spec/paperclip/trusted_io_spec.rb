@@ -27,6 +27,27 @@ describe Paperclip::TrustedIO do
       let(:klass) { StringIO }
       it { should_not be_truthy }
     end
+
+    context "for TrustedIO" do
+      let(:klass) { Paperclip::TrustedIO }
+      it { should be_truthy }
+    end
+  end
+
+  %i(is_a? kind_of? instance_of?).each do |method|
+    describe method.to_s do
+      subject { trusted_io.send(method, klass) }
+
+      context "for StringIO" do
+        let(:klass) { StringIO }
+        it { should_not be_truthy }
+      end
+
+      context "for TrustedIO" do
+        let(:klass) { Paperclip::TrustedIO }
+        it { should be_truthy }
+      end
+    end
   end
 
   describe "#initialize" do
