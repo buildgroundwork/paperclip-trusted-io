@@ -2,7 +2,7 @@ require 'paperclip'
 
 module Paperclip
   class TrustedIOAdapter < AbstractAdapter
-    delegate :binmode, :close, :closed?, :eof?, :rewind, :to => :target
+    delegate :read, :binmode, :close, :closed?, :eof?, :rewind, :to => :target
 
     def initialize(target)
       @target = target
@@ -14,10 +14,6 @@ module Paperclip
 
     def trusted?
       true
-    end
-
-    def read
-      target.read
     end
 
     def fingerprint

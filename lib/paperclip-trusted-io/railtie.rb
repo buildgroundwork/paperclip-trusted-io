@@ -3,6 +3,7 @@ require 'paperclip-trusted-io/paperclip/io_adapters/trusted_io_adapter'
 require 'paperclip-trusted-io/paperclip/trusted_io'
 require 'paperclip-trusted-io/paperclip/attachment'
 require 'paperclip-trusted-io/paperclip/has_attached_file'
+require 'paperclip-trusted-io/paperclip/storage/filesystem'
 
 module Paperclip
   require 'rails'
