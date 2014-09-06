@@ -1,8 +1,10 @@
 require 'paperclip/io_adapters/trusted_io_adapter'
+require 'paperclip/trusted_io'
 
 describe Paperclip::TrustedIOAdapter do
   let(:adapter) { described_class.new(target) }
-  let(:target) { Paperclip::TrustedIO.new(<<-TEXT, content_type: 'text/plain', filename: 'jabberwocky') }
+  let(:target) { Paperclip::TrustedIO.new(content, content_type: 'text/plain', filename: 'jabberwocky') }
+  let(:content) { <<-TEXT }
     `Twas brillig, and the slithy toves
       Did gyre and gimble in the wabe:
     All mimsy were the borogoves,
@@ -27,6 +29,40 @@ describe Paperclip::TrustedIOAdapter do
   describe "#size" do
     subject { adapter.size }
     it { should == target.size }
+  end
+
+  describe "#read" do
+    subject { adapter.read }
+    it { should == content }
+  end
+
+  describe "fingerprint" do
+    subject { adapter.fingerprint }
+    it { should == Digest::MD5.hexdigest(content) }
+
+    it "should not change the read position" do
+      expect { subject }.to_not change(target, :pos)
+    end
+  end
+
+  describe "#binmode" do
+    subject { adapter.binmode }
+    it { should == target }
+  end
+
+  describe "#binmode?" do
+    subject { adapter.binmode? }
+    it { should be_falsy }
+  end
+
+  describe "#close!" do
+    subject { -> { adapter.close! } }
+    it { should change(target, :closed?).to be_truthy }
+  end
+
+  describe "#unlink" do
+    subject { -> { adapter.unlink } }
+    it { should_not raise_error }
   end
 end
 
