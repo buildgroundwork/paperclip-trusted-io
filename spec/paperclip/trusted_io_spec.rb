@@ -14,6 +14,12 @@ describe Paperclip::TrustedIO do
   let(:content_type) { 'text/plain' }
   let(:filename) { 'p-and-p' }
 
+  # Paperclip provides the StringioAdapter, which will match any StringIO target.
+  # The Paperclip adapter registry also provides no way to insert an adapter before
+  # other adapters, so the StringioAdapter will almost certainly match before any
+  # custom adapter.  If this class matches as a StringIO instance then that adapter
+  # will match, and Paperclip will never try to use the TrustedIOAdapter for this
+  # target.
   describe "#===" do
     subject { klass === trusted_io }
 
