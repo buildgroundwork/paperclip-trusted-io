@@ -1,11 +1,11 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'paperclip/trusted_io/version'
+require 'paperclip-trusted-io/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "paperclip-trusted-io"
-  spec.version       = Paperclip::TrustedIO::VERSION
+  spec.version       = PaperclipTrustedIO::VERSION
   spec.authors       = ["Adam Milligan"]
   spec.email         = ["adam@buildgroundwork.com"]
   spec.summary       = %q{Unchecked IO stream for Paperclip}

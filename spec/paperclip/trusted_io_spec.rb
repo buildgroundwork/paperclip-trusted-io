@@ -1,4 +1,4 @@
-require 'paperclip/trusted_io'
+require 'paperclip-trusted-io/paperclip/trusted_io'
 
 describe Paperclip::TrustedIO do
   let(:trusted_io) { described_class.new(content, content_type: content_type, filename: filename) }

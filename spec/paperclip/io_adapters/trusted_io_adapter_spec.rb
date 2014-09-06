@@ -1,5 +1,5 @@
-require 'paperclip/io_adapters/trusted_io_adapter'
-require 'paperclip/trusted_io'
+require 'paperclip-trusted-io/paperclip/io_adapters/trusted_io_adapter'
+require 'paperclip-trusted-io/paperclip/trusted_io'
 
 describe Paperclip::TrustedIOAdapter do
   let(:adapter) { described_class.new(target) }
