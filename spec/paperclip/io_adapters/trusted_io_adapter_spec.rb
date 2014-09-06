@@ -65,9 +65,11 @@ describe Paperclip::TrustedIOAdapter do
     it { should change(target, :closed?).to be_truthy }
   end
 
-  describe "#unlink" do
-    subject { -> { adapter.unlink } }
-    it { should_not raise_error }
+  describe "unsupported methods" do
+    subject { adapter }
+    %i(path unlink).each do |method|
+      it { should_not respond_to(method) }
+    end
   end
 end
 
