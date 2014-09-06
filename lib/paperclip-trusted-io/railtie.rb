@@ -1,6 +1,8 @@
 require 'paperclip-trusted-io/paperclip/io_adapters/abstract_adapter'
 require 'paperclip-trusted-io/paperclip/io_adapters/trusted_io_adapter'
 require 'paperclip-trusted-io/paperclip/trusted_io'
+require 'paperclip-trusted-io/paperclip/attachment'
+require 'paperclip-trusted-io/paperclip/has_attached_file'
 
 module Paperclip
   require 'rails'
