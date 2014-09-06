@@ -12,6 +12,10 @@ module Paperclip
     attr_writer :content_type, :size
     alias_method :close!, :close
 
+    def trusted?
+      true
+    end
+
     def read
       target.read
     end

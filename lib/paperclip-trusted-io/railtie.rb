@@ -1,3 +1,4 @@
+require 'paperclip-trusted-io/paperclip/io_adapters/abstract_adapter'
 require 'paperclip-trusted-io/paperclip/io_adapters/trusted_io_adapter'
 require 'paperclip-trusted-io/paperclip/trusted_io'
 

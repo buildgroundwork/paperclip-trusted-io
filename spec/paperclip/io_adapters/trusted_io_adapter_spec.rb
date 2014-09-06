@@ -31,6 +31,11 @@ describe Paperclip::TrustedIOAdapter do
     it { should == target.size }
   end
 
+  describe "#trusted?" do
+    subject { adapter.trusted? }
+    it { should be_truthy }
+  end
+
   describe "#read" do
     subject { adapter.read }
     it { should == content }
