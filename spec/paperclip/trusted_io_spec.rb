@@ -76,7 +76,21 @@ describe Paperclip::TrustedIO do
 
   describe "#size" do
     subject { trusted_io.size }
-    it { should == content.size }
+
+    context "when initialized with content" do
+      it { should == content.size }
+    end
+
+    context "when content is added after initialization" do
+      let(:content) { "" }
+      let(:more_content) { <<-TEXT }
+        "My dear Mr. Bennet," said his lady to him one day, "have you heard that Netherfield Park is let at last?"
+
+        Mr. Bennet replied that he had not.
+      TEXT
+      before { trusted_io << more_content }
+      it { should == more_content.size }
+    end
   end
 end
 

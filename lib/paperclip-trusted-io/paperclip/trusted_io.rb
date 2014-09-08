@@ -4,10 +4,9 @@ module Paperclip
       super(content)
       @content_type = content_type || raise("TrustedIO requires a content type")
       @original_filename = filename || raise("TrustedIO requires a filename")
-      @size = content.size
     end
 
-    attr_reader :content_type, :original_filename, :size
+    attr_reader :content_type, :original_filename
 
     %i(kind_of? is_a?).each do |method|
       define_method(method) do |klass|
